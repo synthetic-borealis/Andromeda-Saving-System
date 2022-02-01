@@ -26,7 +26,6 @@ namespace Andromeda.Saving.Cbor
             CborOptions.Default.ArrayLengthMode = LengthMode.IndefiniteLength;
             CborOptions.Default.DiscriminatorPolicy = CborDiscriminatorPolicy.Always;
 
-            // Math
             #region Math Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Vector2));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<Vector2>(om =>
@@ -141,7 +140,7 @@ namespace Andromeda.Saving.Cbor
                 new ObjectConverter<Matrix4x4>(CborOptions.Default));
             #endregion // Math Types
 
-            // Geometry
+            #region Geometry Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Bounds));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<Bounds>(om =>
             {
@@ -184,18 +183,6 @@ namespace Andromeda.Saving.Cbor
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Rect),
                 new ObjectConverter<Rect>(CborOptions.Default));
 
-            CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(RectOffset));
-            CborOptions.Default.Registry.ObjectMappingRegistry.Register<RectOffset>(om =>
-            {
-                om.MapMember(m => m.left).SetMemberName("left");
-                om.MapMember(m => m.right).SetMemberName("right");
-                om.MapMember(m => m.top).SetMemberName("top");
-                om.MapMember(m => m.bottom).SetMemberName("bottom");
-                om.Initialize();
-            });
-            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(RectOffset),
-                new ObjectConverter<RectOffset>(CborOptions.Default));
-
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(RectInt));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<RectInt>(om =>
             {
@@ -208,15 +195,17 @@ namespace Andromeda.Saving.Cbor
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(RectInt),
                 new ObjectConverter<RectInt>(CborOptions.Default));
 
-            CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(RangeInt));
-            CborOptions.Default.Registry.ObjectMappingRegistry.Register<RangeInt>(om =>
+            CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(RectOffset));
+            CborOptions.Default.Registry.ObjectMappingRegistry.Register<RectOffset>(om =>
             {
-                om.MapMember(m => m.start).SetMemberName("start");
-                om.MapMember(m => m.length).SetMemberName("length");
+                om.MapMember(m => m.left).SetMemberName("left");
+                om.MapMember(m => m.right).SetMemberName("right");
+                om.MapMember(m => m.top).SetMemberName("top");
+                om.MapMember(m => m.bottom).SetMemberName("bottom");
                 om.Initialize();
             });
-            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(RangeInt),
-                new ObjectConverter<RangeInt>(CborOptions.Default));
+            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(RectOffset),
+                new ObjectConverter<RectOffset>(CborOptions.Default));
 
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Plane));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<Plane>(om =>
@@ -227,6 +216,7 @@ namespace Andromeda.Saving.Cbor
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Plane),
                 new ObjectConverter<Plane>(CborOptions.Default));
+            #endregion // Geometry Types
 
             // Physics
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Ray));
@@ -317,6 +307,17 @@ namespace Andromeda.Saving.Cbor
             // Hashing
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Hash128));
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Hash128), new Hash128Converter());
+
+            // Utility
+            CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(RangeInt));
+            CborOptions.Default.Registry.ObjectMappingRegistry.Register<RangeInt>(om =>
+            {
+                om.MapMember(m => m.start).SetMemberName("start");
+                om.MapMember(m => m.length).SetMemberName("length");
+                om.Initialize();
+            });
+            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(RangeInt),
+                new ObjectConverter<RangeInt>(CborOptions.Default));
 
             _isInitialised = true;
         }
