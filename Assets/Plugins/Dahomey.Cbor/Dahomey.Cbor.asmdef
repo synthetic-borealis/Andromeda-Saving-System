@@ -1,0 +1,16 @@
+{
+    "name": "Dahomey.Cbor",
+    "rootNamespace": "",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "ANDROMEDA_SERIALIZER_CBOR"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
