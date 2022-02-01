@@ -283,29 +283,28 @@ namespace Andromeda.Saving.Cbor
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(AnimationCurve), new AnimationCurveConverter());
             #endregion
 
-            // Particle Systems
+            #region Particle Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(ParticleSystem.Particle));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<ParticleSystem.Particle>(om =>
             {
+                om.MapMember(m => m.velocity).SetMemberName("velocity");
                 om.MapMember(m => m.angularVelocity).SetMemberName("angularVelocity");
                 om.MapMember(m => m.angularVelocity3D).SetMemberName("angularVelocity3D");
-                om.MapMember(m => m.animatedVelocity).SetMemberName("animatedVelocity");
                 om.MapMember(m => m.axisOfRotation).SetMemberName("axisOfRotation");
                 om.MapMember(m => m.position).SetMemberName("position");
-                om.MapMember(m => m.randomSeed).SetMemberName("randomSeed");
-                om.MapMember(m => m.remainingLifetime).SetMemberName("remainingLifetime");
                 om.MapMember(m => m.rotation).SetMemberName("rotation");
                 om.MapMember(m => m.rotation3D).SetMemberName("rotation3D");
+                om.MapMember(m => m.randomSeed).SetMemberName("randomSeed");
+                om.MapMember(m => m.remainingLifetime).SetMemberName("remainingLifetime");
                 om.MapMember(m => m.startColor).SetMemberName("startColor");
                 om.MapMember(m => m.startLifetime).SetMemberName("startLifetime");
                 om.MapMember(m => m.startSize).SetMemberName("startSize");
                 om.MapMember(m => m.startSize3D).SetMemberName("startSize3D");
-                om.MapMember(m => m.totalVelocity).SetMemberName("totalVelocity");
-                om.MapMember(m => m.velocity).SetMemberName("velocity");
                 om.Initialize();
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(ParticleSystem.Particle),
                 new ObjectConverter<ParticleSystem.Particle>(CborOptions.Default));
+            #endregion
 
             // Hashing
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Hash128));
