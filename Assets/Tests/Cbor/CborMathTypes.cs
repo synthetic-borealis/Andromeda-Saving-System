@@ -2,6 +2,7 @@
 using Dahomey.Cbor.Util;
 using NUnit.Framework;
 using UnityEngine;
+using DahomeyCbor = Dahomey.Cbor.Cbor;
 
 namespace Andromeda.Tests.Cbor
 {
@@ -15,11 +16,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(vector, writer);
+                DahomeyCbor.Serialize(vector, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Vector2 deserialized = Dahomey.Cbor.Cbor.Deserialize<Vector2>(bytes);
+            Vector2 deserialized = DahomeyCbor.Deserialize<Vector2>(bytes);
 
             Assert.AreEqual(vector, deserialized);
         }
@@ -32,11 +33,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(vector, writer);
+                DahomeyCbor.Serialize(vector, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Vector2Int deserialized = Dahomey.Cbor.Cbor.Deserialize<Vector2Int>(bytes);
+            Vector2Int deserialized = DahomeyCbor.Deserialize<Vector2Int>(bytes);
 
             Assert.AreEqual(vector, deserialized);
         }
@@ -49,11 +50,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(vector, writer);
+                DahomeyCbor.Serialize(vector, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Vector3 deserialized = Dahomey.Cbor.Cbor.Deserialize<Vector3>(bytes);
+            Vector3 deserialized = DahomeyCbor.Deserialize<Vector3>(bytes);
 
             Assert.AreEqual(vector, deserialized);
         }
@@ -66,11 +67,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(vector, writer);
+                DahomeyCbor.Serialize(vector, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Vector3Int deserialized = Dahomey.Cbor.Cbor.Deserialize<Vector3Int>(bytes);
+            Vector3Int deserialized = DahomeyCbor.Deserialize<Vector3Int>(bytes);
 
             Assert.AreEqual(vector, deserialized);
         }
@@ -83,11 +84,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(vector, writer);
+                DahomeyCbor.Serialize(vector, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Vector4 deserialized = Dahomey.Cbor.Cbor.Deserialize<Vector4>(bytes);
+            Vector4 deserialized = DahomeyCbor.Deserialize<Vector4>(bytes);
 
             Assert.AreEqual(vector, deserialized);
         }
@@ -100,11 +101,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(quaternion, writer);
+                DahomeyCbor.Serialize(quaternion, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Quaternion deserialized = Dahomey.Cbor.Cbor.Deserialize<Quaternion>(bytes);
+            Quaternion deserialized = DahomeyCbor.Deserialize<Quaternion>(bytes);
 
             Assert.AreEqual(quaternion, deserialized);
         }
@@ -117,11 +118,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(matrix, writer);
+                DahomeyCbor.Serialize(matrix, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Matrix4x4 deserialized = Dahomey.Cbor.Cbor.Deserialize<Matrix4x4>(bytes);
+            Matrix4x4 deserialized = DahomeyCbor.Deserialize<Matrix4x4>(bytes);
 
             Assert.AreEqual(matrix, deserialized);
         }
@@ -134,11 +135,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(color, writer);
+                DahomeyCbor.Serialize(color, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Color deserialized = Dahomey.Cbor.Cbor.Deserialize<Color>(bytes);
+            Color deserialized = DahomeyCbor.Deserialize<Color>(bytes);
 
             Assert.AreEqual(color, deserialized);
         }
@@ -152,11 +153,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(color32, writer);
+                DahomeyCbor.Serialize(color32, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Color32 deserialized = Dahomey.Cbor.Cbor.Deserialize<Color32>(bytes);
+            Color32 deserialized = DahomeyCbor.Deserialize<Color32>(bytes);
 
             Assert.AreEqual(color32, deserialized);
         }

@@ -1,10 +1,8 @@
 #if ANDROMEDA_SERIALIZER_CBOR
-using System.Collections;
-using System.Collections.Generic;
 using Dahomey.Cbor.Util;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
+using DahomeyCbor = Dahomey.Cbor.Cbor;
 
 namespace Andromeda.Tests.Cbor
 {
@@ -18,11 +16,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(bounds, writer);
+                DahomeyCbor.Serialize(bounds, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Bounds deserialized = Dahomey.Cbor.Cbor.Deserialize<Bounds>(bytes);
+            Bounds deserialized = DahomeyCbor.Deserialize<Bounds>(bytes);
 
             Assert.AreEqual(bounds, deserialized);
         }
@@ -35,11 +33,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(bounds, writer);
+                DahomeyCbor.Serialize(bounds, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            BoundsInt deserialized = Dahomey.Cbor.Cbor.Deserialize<BoundsInt>(bytes);
+            BoundsInt deserialized = DahomeyCbor.Deserialize<BoundsInt>(bytes);
 
             Assert.AreEqual(bounds, deserialized);
         }
@@ -52,11 +50,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(bounds, writer);
+                DahomeyCbor.Serialize(bounds, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            BoundingSphere deserialized = Dahomey.Cbor.Cbor.Deserialize<BoundingSphere>(bytes);
+            BoundingSphere deserialized = DahomeyCbor.Deserialize<BoundingSphere>(bytes);
 
             Assert.AreEqual(bounds, deserialized);
         }
@@ -64,16 +62,16 @@ namespace Andromeda.Tests.Cbor
         [Test]
         public void ConvertRect()
         {
-            Rect rect = new Rect(0 , 0, 2, 2);
+            Rect rect = new Rect(0, 0, 2, 2);
 
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(rect, writer);
+                DahomeyCbor.Serialize(rect, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Rect deserialized = Dahomey.Cbor.Cbor.Deserialize<Rect>(bytes);
+            Rect deserialized = DahomeyCbor.Deserialize<Rect>(bytes);
 
             Assert.AreEqual(rect, deserialized);
         }
@@ -86,11 +84,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(rect, writer);
+                DahomeyCbor.Serialize(rect, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            RectInt deserialized = Dahomey.Cbor.Cbor.Deserialize<RectInt>(bytes);
+            RectInt deserialized = DahomeyCbor.Deserialize<RectInt>(bytes);
 
             Assert.AreEqual(rect, deserialized);
         }
@@ -103,11 +101,11 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(rectOffset, writer);
+                DahomeyCbor.Serialize(rectOffset, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            RectOffset deserialized = Dahomey.Cbor.Cbor.Deserialize<RectOffset>(bytes);
+            RectOffset deserialized = DahomeyCbor.Deserialize<RectOffset>(bytes);
 
             Assert.AreEqual(rectOffset.ToString(), deserialized.ToString());
         }
@@ -122,14 +120,14 @@ namespace Andromeda.Tests.Cbor
             byte[] bytes = null;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
-                Dahomey.Cbor.Cbor.Serialize(plane, writer);
+                DahomeyCbor.Serialize(plane, writer);
                 bytes = writer.WrittenSpan.ToArray();
             }
 
-            Plane deserialized = Dahomey.Cbor.Cbor.Deserialize<Plane>(bytes);
+            Plane deserialized = DahomeyCbor.Deserialize<Plane>(bytes);
 
             Assert.AreEqual(plane, deserialized);
         }
-    } 
+    }
 }
 #endif // ANDROMEDA_SERIALIZER_CBOR
