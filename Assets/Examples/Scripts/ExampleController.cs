@@ -20,5 +20,10 @@ public class ExampleController : MonoBehaviour
         {
             savingSystem.Load(SaveFile);
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
