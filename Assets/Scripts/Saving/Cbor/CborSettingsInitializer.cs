@@ -306,11 +306,12 @@ namespace Andromeda.Saving.Cbor
                 new ObjectConverter<ParticleSystem.Particle>(CborOptions.Default));
             #endregion
 
-            // Hashing
+            #region Hashing Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Hash128));
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Hash128), new Hash128Converter());
+            #endregion // Hashing Types
 
-            // Utility
+            #region Utility Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(RangeInt));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<RangeInt>(om =>
             {
@@ -320,6 +321,7 @@ namespace Andromeda.Saving.Cbor
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(RangeInt),
                 new ObjectConverter<RangeInt>(CborOptions.Default));
+            #endregion
 
             _isInitialised = true;
         }
