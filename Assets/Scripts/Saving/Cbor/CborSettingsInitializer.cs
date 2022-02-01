@@ -243,7 +243,7 @@ namespace Andromeda.Saving.Cbor
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(LayerMask), new LayerMaskConverter());
             #endregion // Physics Types
 
-            // Gradient
+            #region Gradient Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(GradientAlphaKey));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<GradientAlphaKey>(om =>
             {
@@ -266,6 +266,7 @@ namespace Andromeda.Saving.Cbor
 
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Gradient));
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Gradient), new GradientConverter());
+            #endregion
 
             // Animation Curves
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Keyframe));

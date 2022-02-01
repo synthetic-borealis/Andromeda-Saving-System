@@ -1,10 +1,7 @@
 #if ANDROMEDA_SERIALIZER_CBOR
-using System.Collections;
-using System.Collections.Generic;
 using Dahomey.Cbor.Util;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 using DahomeyCbor = Dahomey.Cbor.Cbor;
 
 namespace Andromeda.Tests.Cbor
