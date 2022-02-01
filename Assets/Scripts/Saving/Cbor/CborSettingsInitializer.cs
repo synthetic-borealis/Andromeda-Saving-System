@@ -268,7 +268,7 @@ namespace Andromeda.Saving.Cbor
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Gradient), new GradientConverter());
             #endregion
 
-            // Animation Curves
+            #region Animation Curve Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Keyframe));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<Keyframe>(om =>
             {
@@ -281,6 +281,7 @@ namespace Andromeda.Saving.Cbor
 
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(AnimationCurve));
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(AnimationCurve), new AnimationCurveConverter());
+            #endregion
 
             // Particle Systems
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(ParticleSystem.Particle));
