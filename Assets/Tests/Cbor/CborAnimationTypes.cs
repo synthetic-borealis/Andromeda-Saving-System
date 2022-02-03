@@ -6,7 +6,7 @@ using DahomeyCbor = Dahomey.Cbor.Cbor;
 
 namespace Andromeda.Tests.Cbor
 {
-    public class CborAnimationCurveTypes
+    public class CborAnimationTypes
     {
         [Test]
         public void ConvertKeyframe()
