@@ -265,7 +265,12 @@ namespace Andromeda.Saving.Cbor
                 new ObjectConverter<GradientColorKey>(CborOptions.Default));
 
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Gradient));
-            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Gradient), new GradientConverter());
+            CborOptions.Default.Registry.ObjectMappingRegistry.Register<Gradient>(om =>
+            {
+                om.MapMember(m => m.alphaKeys).SetMemberName("alphaKeys");
+                om.MapMember(m => m.colorKeys).SetMemberName("colorKeys");
+                om.Initialize();
+            });
             #endregion
 
             #region Animation Types
@@ -274,42 +279,54 @@ namespace Andromeda.Saving.Cbor
             {
                 om.MapMember(m => m.time).SetMemberName("time");
                 om.MapMember(m => m.value).SetMemberName("value");
+                om.MapMember(m => m.inTangent).SetMemberName("inTangent");
+                om.MapMember(m => m.outTangent).SetMemberName("outTangent");
+                om.MapMember(m => m.inWeight).SetMemberName("inWeight");
+                om.MapMember(m => m.outWeight).SetMemberName("outWeight");
+                om.MapMember(m => m.weightedMode).SetMemberName("weightedMode");
                 om.Initialize();
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Keyframe),
                 new ObjectConverter<Keyframe>(CborOptions.Default));
 
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(AnimationCurve));
-            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(AnimationCurve), new AnimationCurveConverter());
+            CborOptions.Default.Registry.ObjectMappingRegistry.Register<AnimationCurve>(om =>
+            {
+                om.MapMember(m => m.keys).SetMemberName("keys");
+                om.MapMember(m => m.preWrapMode).SetMemberName("preWrapMode");
+                om.MapMember(m => m.postWrapMode).SetMemberName("postWrapMode");
+            });
+            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(AnimationCurve),
+                new ObjectConverter<AnimationCurve>(CborOptions.Default));
             #endregion
 
             #region Particle Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(ParticleSystem.Particle));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<ParticleSystem.Particle>(om =>
             {
-                om.MapMember(m => m.velocity).SetMemberName("velocity");
-                om.MapMember(m => m.angularVelocity).SetMemberName("angularVelocity");
-                om.MapMember(m => m.angularVelocity3D).SetMemberName("angularVelocity3D");
-                om.MapMember(m => m.axisOfRotation).SetMemberName("axisOfRotation");
                 om.MapMember(m => m.position).SetMemberName("position");
-                om.MapMember(m => m.rotation).SetMemberName("rotation");
-                om.MapMember(m => m.rotation3D).SetMemberName("rotation3D");
-                om.MapMember(m => m.randomSeed).SetMemberName("randomSeed");
+                om.MapMember(m => m.velocity).SetMemberName("velocity");
                 om.MapMember(m => m.remainingLifetime).SetMemberName("remainingLifetime");
-                om.MapMember(m => m.startColor).SetMemberName("startColor");
                 om.MapMember(m => m.startLifetime).SetMemberName("startLifetime");
+                om.MapMember(m => m.startColor).SetMemberName("startColor");
+                om.MapMember(m => m.randomSeed).SetMemberName("randomSeed");
+                om.MapMember(m => m.axisOfRotation).SetMemberName("axisOfRotation");
                 om.MapMember(m => m.startSize).SetMemberName("startSize");
                 om.MapMember(m => m.startSize3D).SetMemberName("startSize3D");
+                om.MapMember(m => m.rotation).SetMemberName("rotation");
+                om.MapMember(m => m.rotation3D).SetMemberName("rotation3D");
+                om.MapMember(m => m.angularVelocity).SetMemberName("angularVelocity");
+                om.MapMember(m => m.angularVelocity3D).SetMemberName("angularVelocity3D");
                 om.Initialize();
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(ParticleSystem.Particle),
                 new ObjectConverter<ParticleSystem.Particle>(CborOptions.Default));
             #endregion
 
-            #region Hashing Types
+            #region Hash Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Hash128));
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Hash128), new Hash128Converter());
-            #endregion // Hashing Types
+            #endregion // Hash Types
 
             #region Utility Types
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(RangeInt));

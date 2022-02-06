@@ -6,7 +6,7 @@ using DahomeyCbor = Dahomey.Cbor.Cbor;
 
 namespace Andromeda.Tests.Cbor
 {
-    public class CborHashingTypes
+    public class CborHashTypes
     {
         [Test]
         public void ConvertHash128()

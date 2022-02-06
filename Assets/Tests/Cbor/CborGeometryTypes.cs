@@ -22,7 +22,8 @@ namespace Andromeda.Tests.Cbor
 
             Bounds deserialized = DahomeyCbor.Deserialize<Bounds>(bytes);
 
-            Assert.AreEqual(bounds, deserialized);
+            Assert.IsTrue(bounds.center == deserialized.center);
+            Assert.IsTrue(bounds.size == deserialized.size);
         }
 
         [Test]
@@ -39,7 +40,8 @@ namespace Andromeda.Tests.Cbor
 
             BoundsInt deserialized = DahomeyCbor.Deserialize<BoundsInt>(bytes);
 
-            Assert.AreEqual(bounds, deserialized);
+            Assert.IsTrue(bounds.center == deserialized.center);
+            Assert.IsTrue(bounds.size == deserialized.size);
         }
 
         [Test]
@@ -56,7 +58,8 @@ namespace Andromeda.Tests.Cbor
 
             BoundingSphere deserialized = DahomeyCbor.Deserialize<BoundingSphere>(bytes);
 
-            Assert.AreEqual(bounds, deserialized);
+            Assert.IsTrue(bounds.position == deserialized.position);
+            Assert.IsTrue(Mathf.Approximately(bounds.radius, deserialized.radius));
         }
 
         [Test]

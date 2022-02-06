@@ -22,7 +22,13 @@ namespace Andromeda.Tests.Cbor
 
             Keyframe deserialized = DahomeyCbor.Deserialize<Keyframe>(bytes);
 
-            Assert.AreEqual(keyframe, deserialized);
+            Assert.IsTrue(Mathf.Approximately(keyframe.time, deserialized.time));
+            Assert.IsTrue(Mathf.Approximately(keyframe.value, deserialized.value));
+            Assert.IsTrue(Mathf.Approximately(keyframe.inTangent, deserialized.inTangent));
+            Assert.IsTrue(Mathf.Approximately(keyframe.outTangent, deserialized.outTangent));
+            Assert.IsTrue(Mathf.Approximately(keyframe.inWeight, deserialized.inWeight));
+            Assert.IsTrue(Mathf.Approximately(keyframe.outWeight, deserialized.outWeight));
+            Assert.AreEqual(keyframe.weightedMode, deserialized.weightedMode);
         }
 
         [Test]
@@ -39,7 +45,12 @@ namespace Andromeda.Tests.Cbor
 
             AnimationCurve deserialized = DahomeyCbor.Deserialize<AnimationCurve>(bytes);
 
-            Assert.AreEqual(curve, deserialized);
+            for (float i = 0.0f; i <= 5.0f; i += 0.25f)
+            {
+                float originalVal = curve.Evaluate(i);
+                float deserializedVal = deserialized.Evaluate(i);
+                Assert.IsTrue(Mathf.Approximately(originalVal, deserializedVal));
+            }
         }
     }
 }
