@@ -1,4 +1,4 @@
-#if ANDROMEDA_SERIALIZER_CBOR
+#if ANDROMEDA_SERIALIZER_CBOR||UNITY_EDITOR
 using Dahomey.Cbor.Serialization;
 using Dahomey.Cbor.Serialization.Converters;
 using System.Text;

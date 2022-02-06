@@ -1,4 +1,4 @@
-#if ANDROMEDA_SERIALIZER_CBOR
+#if ANDROMEDA_SERIALIZER_CBOR||UNITY_EDITOR
 using Dahomey.Cbor;
 using Dahomey.Cbor.Util;
 using System.IO;
@@ -21,7 +21,7 @@ namespace Andromeda.Saving.Cbor
 
             state = Dahomey.Cbor.Cbor.Deserialize<GameState>(bytes);
 
-            return state;
+            return state != null ? state : new GameState();
         }
 
         protected override void SaveFile(string saveFile, GameState state)
