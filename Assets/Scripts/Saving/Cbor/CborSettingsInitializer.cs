@@ -8,7 +8,7 @@ namespace Andromeda.Saving.Cbor
 {
     public static class CborSettingsInitializer
     {
-        private static bool _isInitialised = false;
+        private static bool _isInitialised;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
         private static void OnBeforeSplashScreen() => Initialise();

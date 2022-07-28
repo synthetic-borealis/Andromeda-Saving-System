@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d4d08143826ef4db85861279f062d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uniqueIdentifier: eefe97a6-070c-4bdb-9666-1341ce40bf23
+  uniqueIdentifier: 0bdfbd02-f8b2-4666-9e75-d6988156ea1b
 --- !u!65 &161390370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -291,8 +291,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eb305017ec573548b6bff4fc0abfe1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _saveExtension: sav
-  _saveDirectory: savegames
+  saveExtension: sav
+  saveDirectory: savedGames
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d4d08143826ef4db85861279f062d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uniqueIdentifier: f08125d7-bf00-4a8e-81d6-b82b4db3e0d4
+  uniqueIdentifier: 4062d26a-4cc7-404f-8a0d-d7e51bb295a9
 --- !u!65 &1801295223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d4d08143826ef4db85861279f062d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _uniqueIdentifier: 3ef640c6-9bb8-44bd-b7a7-90e0f3881f07
+  uniqueIdentifier: 9302ed8f-1b2c-49b4-b4fc-666623b1787e
 --- !u!65 &1827424795
 BoxCollider:
   m_ObjectHideFlags: 0

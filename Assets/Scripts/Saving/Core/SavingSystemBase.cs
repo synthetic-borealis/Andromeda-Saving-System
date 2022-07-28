@@ -10,21 +10,29 @@ namespace Andromeda.Saving
         protected const string LastSceneIndexKey = "lastSceneBuildIndex";
 
         [SerializeField]
-        private string _saveExtension = "sav";
-        public string saveExtension { get { return _saveExtension; } }
+        private string saveExtension = "sav";
+
+        public string SaveExtension
+        {
+            get { return saveExtension; }
+        }
 
         [SerializeField]
-        private string _saveDirectory = "savegames";
-        public string saveDirectory { get { return _saveDirectory; } }
+        private string saveDirectory = "savedGames";
 
-        protected string GetPathFromSaveDirectory()
+        public string SaveDirectory
         {
-            return Path.Combine(Application.persistentDataPath, _saveDirectory);
+            get { return saveDirectory; }
+        }
+
+        private string GetPathFromSaveDirectory()
+        {
+            return Path.Combine(Application.persistentDataPath, saveDirectory);
         }
 
         protected string GetPathFromSaveFile(string saveFile)
         {
-            return Path.Combine(GetPathFromSaveDirectory(), saveFile + "." + _saveExtension);
+            return Path.Combine(GetPathFromSaveDirectory(), saveFile + "." + saveExtension);
         }
 
         public IEnumerator LoadLastScene(string saveFile)
@@ -60,17 +68,17 @@ namespace Andromeda.Saving
         {
             state.lastSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
 
-            foreach (SaveableEntity entity in FindObjectsOfType<SaveableEntity>())
+            foreach (SavableEntity entity in FindObjectsOfType<SavableEntity>())
             {
-                state.entities[entity.uniqueIdentifier] = entity.CaptureState();
+                state.entities[entity.UniqueIdentifier] = entity.CaptureState();
             }
         }
 
         private void RestoreState(GameState state)
         {
-            foreach (SaveableEntity entity in FindObjectsOfType<SaveableEntity>())
+            foreach (SavableEntity entity in FindObjectsOfType<SavableEntity>())
             {
-                string entityId = entity.uniqueIdentifier;
+                string entityId = entity.UniqueIdentifier;
 
                 if (state.entities.ContainsKey(entityId))
                 {

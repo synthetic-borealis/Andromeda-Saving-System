@@ -11,24 +11,23 @@ namespace Andromeda.Saving.Cbor
     {
         protected override GameState LoadFile(string saveFile)
         {
-            GameState state = new GameState();
             string saveFilePath = GetPathFromSaveFile(saveFile);
 
-            if (!File.Exists(saveFilePath)) return state;
+            if (!File.Exists(saveFilePath)) return new();
 
             byte[] bytes = File.ReadAllBytes(saveFilePath);
-            if (bytes == null) return state;
+            if (bytes.Length == 0) return new();
 
-            state = Dahomey.Cbor.Cbor.Deserialize<GameState>(bytes);
+            GameState state = Dahomey.Cbor.Cbor.Deserialize<GameState>(bytes);
 
-            return state != null ? state : new GameState();
+            return state ?? new();
         }
 
         protected override void SaveFile(string saveFile, GameState state)
         {
             string saveFilePath = GetPathFromSaveFile(saveFile);
 
-            byte[] bytes = null;
+            byte[] bytes;
             using (ByteBufferWriter writer = new ByteBufferWriter())
             {
                 Dahomey.Cbor.Cbor.Serialize(state, writer, CborOptions.Default);

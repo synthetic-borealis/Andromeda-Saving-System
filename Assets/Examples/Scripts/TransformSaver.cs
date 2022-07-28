@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Andromeda.Saving;
 
-public class TransformSaver : MonoBehaviour, ISaveableComponent
+public class TransformSaver : MonoBehaviour, ISavableComponent
 {
     public class TransformState : ComponentState
     {

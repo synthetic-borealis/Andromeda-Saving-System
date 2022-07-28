@@ -9,7 +9,7 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [
-        "ANDROMEDA_SERIALIZER_CBOR"
+        "ANDROMEDA_SERIALIZER_CBOR||UNITY_EDITOR"
     ],
     "versionDefines": [],
     "noEngineReferences": false

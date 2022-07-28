@@ -9,8 +9,10 @@ namespace Andromeda.Saving.Cbor
     {
         public override LayerMask Read(ref CborReader reader)
         {
-            LayerMask layerMask = new LayerMask();
-            layerMask.value = reader.ReadInt32();
+            LayerMask layerMask = new LayerMask
+            {
+                value = reader.ReadInt32()
+            };
             return layerMask;
         }
 
