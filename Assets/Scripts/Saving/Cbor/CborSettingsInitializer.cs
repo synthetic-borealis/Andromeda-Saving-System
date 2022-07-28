@@ -27,6 +27,7 @@ namespace Andromeda.Saving.Cbor
             CborOptions.Default.DiscriminatorPolicy = CborDiscriminatorPolicy.Always;
 
             #region Math Types
+
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Vector2));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<Vector2>(om =>
             {
@@ -138,9 +139,11 @@ namespace Andromeda.Saving.Cbor
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Matrix4x4),
                 new ObjectConverter<Matrix4x4>(CborOptions.Default));
+
             #endregion // Math Types
 
             #region Geometry Types
+
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Bounds));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<Bounds>(om =>
             {
@@ -216,9 +219,11 @@ namespace Andromeda.Saving.Cbor
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Plane),
                 new ObjectConverter<Plane>(CborOptions.Default));
+
             #endregion // Geometry Types
 
             #region Physics Types
+
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Ray));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<Ray>(om =>
             {
@@ -240,10 +245,13 @@ namespace Andromeda.Saving.Cbor
                 new ObjectConverter<Ray2D>(CborOptions.Default));
 
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(LayerMask));
-            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(LayerMask), new LayerMaskConverter());
+            CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(LayerMask),
+                new LayerMaskConverter());
+
             #endregion // Physics Types
 
             #region Gradient Types
+
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(GradientAlphaKey));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<GradientAlphaKey>(om =>
             {
@@ -271,9 +279,11 @@ namespace Andromeda.Saving.Cbor
                 om.MapMember(m => m.colorKeys).SetMemberName("colorKeys");
                 om.Initialize();
             });
+
             #endregion
 
             #region Animation Types
+
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Keyframe));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<Keyframe>(om =>
             {
@@ -298,9 +308,11 @@ namespace Andromeda.Saving.Cbor
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(AnimationCurve),
                 new ObjectConverter<AnimationCurve>(CborOptions.Default));
+
             #endregion
 
             #region Particle Types
+
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(ParticleSystem.Particle));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<ParticleSystem.Particle>(om =>
             {
@@ -321,14 +333,18 @@ namespace Andromeda.Saving.Cbor
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(ParticleSystem.Particle),
                 new ObjectConverter<ParticleSystem.Particle>(CborOptions.Default));
+
             #endregion
 
             #region Hash Types
+
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(Hash128));
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(Hash128), new Hash128Converter());
+
             #endregion // Hash Types
 
             #region Utility Types
+
             CborOptions.Default.Registry.DiscriminatorConventionRegistry.RegisterType(typeof(RangeInt));
             CborOptions.Default.Registry.ObjectMappingRegistry.Register<RangeInt>(om =>
             {
@@ -338,6 +354,7 @@ namespace Andromeda.Saving.Cbor
             });
             CborOptions.Default.Registry.ConverterRegistry.RegisterConverter(typeof(RangeInt),
                 new ObjectConverter<RangeInt>(CborOptions.Default));
+
             #endregion
 
             _isInitialised = true;

@@ -10,15 +10,14 @@ namespace Andromeda.Saving
     {
         private const string IdentifierPropertyPath = "uniqueIdentifier";
 
-        [SerializeField]
-        private string uniqueIdentifier = "";
+        [SerializeField] private string uniqueIdentifier = "";
 
         public string UniqueIdentifier
         {
             get { return uniqueIdentifier; }
         }
 
-        private static Dictionary<string, SavableEntity> GlobalLookup = new Dictionary<string, SavableEntity>();
+        private static readonly Dictionary<string, SavableEntity> GlobalLookup = new();
 
         private ISavableComponent[] _savableComponents;
 

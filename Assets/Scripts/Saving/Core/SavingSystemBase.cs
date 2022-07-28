@@ -9,20 +9,25 @@ namespace Andromeda.Saving
     {
         protected const string LastSceneIndexKey = "lastSceneBuildIndex";
 
-        [SerializeField]
-        private string saveExtension = "sav";
+        [SerializeField] private string saveExtension = "sav";
 
         public string SaveExtension
         {
             get { return saveExtension; }
         }
 
-        [SerializeField]
-        private string saveDirectory = "savedGames";
+        [SerializeField] private string saveDirectory = "savedGames";
 
         public string SaveDirectory
         {
             get { return saveDirectory; }
+        }
+
+        private SavableEntity[] _savableEntities;
+
+        private void Awake()
+        {
+            _savableEntities = FindObjectsOfType<SavableEntity>();
         }
 
         private string GetPathFromSaveDirectory()
@@ -52,7 +57,7 @@ namespace Andromeda.Saving
 
         public void Save(string saveFile)
         {
-            GameState state = new GameState();
+            GameState state = new();
 
             CaptureState(state);
             Directory.CreateDirectory(GetPathFromSaveDirectory());
@@ -68,7 +73,7 @@ namespace Andromeda.Saving
         {
             state.lastSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
 
-            foreach (SavableEntity entity in FindObjectsOfType<SavableEntity>())
+            foreach (SavableEntity entity in _savableEntities)
             {
                 state.entities[entity.UniqueIdentifier] = entity.CaptureState();
             }
@@ -76,7 +81,7 @@ namespace Andromeda.Saving
 
         private void RestoreState(GameState state)
         {
-            foreach (SavableEntity entity in FindObjectsOfType<SavableEntity>())
+            foreach (SavableEntity entity in _savableEntities)
             {
                 string entityId = entity.UniqueIdentifier;
 

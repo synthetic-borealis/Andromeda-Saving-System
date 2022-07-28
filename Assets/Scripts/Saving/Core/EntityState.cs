@@ -4,6 +4,6 @@ namespace Andromeda.Saving
 {
     public class EntityState
     {
-        public Dictionary<string, ComponentState> components = new Dictionary<string, ComponentState>();
+        public Dictionary<string, ComponentState> components = new();
     }
 }

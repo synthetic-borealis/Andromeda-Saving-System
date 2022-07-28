@@ -2,7 +2,8 @@ namespace Andromeda.Saving
 {
 #if ANDROMEDA_SERIALIZER_CBOR
     public class SavingSystem : Cbor.CborSavingSystem
-    { }
+    {
+    }
 #else
     public class SavingSystem : SavingSystemBase
     {
